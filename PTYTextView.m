@@ -1760,6 +1760,28 @@ static BOOL RectsEqual(NSRect* a, NSRect* b) {
                 break;
         }
     }
+    
+    if ([event modifierFlags] & NSCommandKeyMask) {
+        NSString *path;
+        int x, y;
+        int width = [dataSource width];
+        
+        x = (locationInTextView.x - MARGIN) / charWidth;
+        if (x < 0) {
+            x = 0;
+        }
+        if (x>=width) {
+            x = width - 1;
+        }
+        y = locationInTextView.y / lineHeight;
+        
+        path = [self _getURLForX:x y:y];
+        path = [trouter getFullPath:path workingDirectory:[[dataSource shellTask] getWorkingDirectory] lineNumber:nil];
+        if ([[trouter fileManager] fileExistsAtPath:path]) {
+            
+        }
+    }
+    
     [super rightMouseUp:event];
 }
 
