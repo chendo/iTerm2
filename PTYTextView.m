@@ -5676,7 +5676,7 @@ static bool IsUrlChar(NSString* str)
 
 - (void)logWorkingDirectoryAtLine:(long long) line {
     [workingDirectoryAtLines addObject:[NSArray arrayWithObjects:[NSNumber numberWithLongLong:line], [[dataSource shellTask] getWorkingDirectory], nil]];
-    if ([workingDirectoryAtLines count] >= 1000) {
+    if ([workingDirectoryAtLines count] >= 10000) {
         [workingDirectoryAtLines removeObjectAtIndex:0];
     }
 }
