@@ -1048,6 +1048,11 @@ static NSString* SESSION_ARRANGEMENT_WORKING_DIRECTORY = @"Working Directory";
             // Regular path for inserting a character from a keypress.
             int max = [keystr length];
             NSData *data=nil;
+            
+            // FIXME: Ugly, ugly hack to detect when to log directories.
+            if ([keystr characterAtIndex:0] == 0x0d) {
+                [TEXTVIEW logWorkingDirectoryAtLine:[[TEXTVIEW dataSource] getLineNumber]];
+            }
 
             if (max != 1||[keystr characterAtIndex:0] > 0x7f) {
                 data = [keystr dataUsingEncoding:[TERMINAL encoding]];

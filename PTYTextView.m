@@ -5685,7 +5685,7 @@ static bool IsUrlChar(NSString* str)
     long long previousLine = [[[workingDirectoryAtLines lastObject] objectAtIndex:0] longLongValue];
     long long currentLine;
     
-    for (int i=[workingDirectoryAtLines count] - 2; i != -1; i--) {
+    for (int i=[workingDirectoryAtLines count] - 2; i > -1; i--) {
         
         currentLine = [[[workingDirectoryAtLines objectAtIndex:i] objectAtIndex: 0] longLongValue];
         
